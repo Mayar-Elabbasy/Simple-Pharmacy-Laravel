@@ -58,7 +58,7 @@ and for better understanding concerning how to setup the environment kindly watc
     ```
 12. Open your browser on this url ``` http://localhost:8000```
 
-13. In our Project we have a requirment to remove the registration so the only way to create a new admin, you have to use command line and to Run
+13. In our Project we have a requirement to remove the registration so the only way to create a new admin, you have to use command line and to Run
     php artisan create:admin that has 2 mandatory parameters "email" "password" & 1 optional parameter "name"
     Ex with the optional parameter: 
     ```sh
