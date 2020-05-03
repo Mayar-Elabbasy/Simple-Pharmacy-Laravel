@@ -7,72 +7,91 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+# Simple Pharmacy System
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**It is a project that simulates an online pharmacy system with different roles ( Admin, Pharmacy Owner, Doctor, Client ) using Laravel.**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+You should have `composer` installed. If you don't, install composer from [here](https://getcomposer.org/download/)
+and for better understanding concerning how to setup the environment kindly watch (https://www.youtube.com/watch?v=QEZwOCCXask)
 
-## Learning Laravel
+### Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Download the zipped file and unzip it or Clone it.
+2. cd into the project.  
+3.  Run this command to update composer packages
+    ```sh
+    composer update
+    ```
+4. Create a copy of your .env file
+    ```sh
+    cp .env.example .env
+    ```
+5. Generate an app encryption key
+    ```sh
+    php artisan key:generate
+    ```
+6. Create an empty database for our project
+    Example: open mysql then run
+    ```sh
+    create database simple_pharmacy;
+    ```
+    OR you can create an empty database with a different name and then you must change DB_DATABASE field in .env file.
+	
+7. In the .env file, add database information like (DB_USERNAME,DB_PASSWORD) to allow Laravel to connect to the database.
+8. Migrate the database
+    ```sh
+    php artisan migrate
+    ```
+9. Seed the database
+    ```sh
+    php artisan db:seed --class=PermissionsDoctorSeeder
+    ```
+10. Create symbolic link for images
+    ```sh
+    php artisan storage:link
+    ```
+11. Open up the server
+    ```sh
+    php artisan serve
+    ```
+12. Open your browser on this url ``` http://localhost:8000```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+13. In our Project we have a requirment to remove the registration so the only way to create a new admin, you have to use command line and to Run
+    php artisan create:admin that has 2 mandatory parameters "email" "password" & 1 optional parameter "name"
+    Ex with the optional parameter: 
+    ```sh
+    php artisan create:admin mayarelabbasy2016@gmail.com 123456 --name="Mayar Elabbasy"
+    ```
 
-## Laravel Sponsors
+    Ex without the optional parameter:
+    ```sh
+    php artisan create:admin mayarelabbasy2016@gmail.com 123456
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+14. To generate random medicines you can Run
+    ```sh
+    php artisan tinker
+    ```
+    Then Run
+    ```sh
+    factory(App\Medicine::class, 100)->create();
+    ```
+    You can change the number to generate as many as you need for random medicines.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+
+## Contributors
+
+* Mayar Yasser Elabbasy.
+* Ahmed Mamdouh.
+* Ahmed Tawfieck.
+* Mohamed Ahmed Ramadan.
+
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
